@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Blackjack {
   
-  public static class Hand {
+  private static class Hand {
     //Field
     private Deck hand;
     //Constructor
