@@ -1,11 +1,16 @@
 package cs2.particles;
 
+import java.util.ArrayList;
+
 import cs2.util.Vec2;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -19,15 +24,30 @@ public class ParticleApp extends Application {
     stg.show();
     GraphicsContext g = canvas.getGraphicsContext2D();
 
-    ParticleSystem ps = new ParticleSystem(new Vec2(300,200));
+    ArrayList<ParticleSystem> lst = new ArrayList<ParticleSystem>();
+    //ParticleSystem ps = new ParticleSystem(new Vec2(300,200));
+
+    canvas.setOnMouseClicked((MouseEvent e) -> {
+      lst.add(new ParticleSystem(new Vec2(e.getX(), e.getY())));
+    });
+
+    canvas.setOnKeyTyped((KeyEvent e) -> {
+      System.out.println("Pressed:" + e.getCode());
+      if(e.getCharacter().equals(" ")) {
+        lst.clear();
+      }
+    });
+    canvas.requestFocus();
 
     AnimationTimer timer = new AnimationTimer() {
       public void handle(long t) {
         g.setFill(Color.BLACK);
         g.fillRect(0,0,600,600);
-        ps.display(g);
-        ps.update();
-        ps.addParticle();
+        for(ParticleSystem ps : lst) {
+          ps.display(g);
+          ps.update();
+          ps.addParticle();
+        }
       }
     };
     timer.start();
