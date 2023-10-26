@@ -17,6 +17,11 @@ public class Vec2 {
 
   public double getX() { return this.x; }
   public double getY() { return this.y; }
+  
+  public void moveTo(double newx, double newy) {
+    this.x = newx;
+    this.y = newy;
+  }
 
   public void moveThis(Vec2 other) {
     this.x += other.x;

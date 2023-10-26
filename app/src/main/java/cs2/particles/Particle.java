@@ -20,4 +20,9 @@ public abstract class Particle {
   public void update() {
     this.pos.moveThis(this.vel);
   }
+
+  public void addForce(Vec2 force) {
+    this.vel.moveThis(force);
+  }
+
 }
