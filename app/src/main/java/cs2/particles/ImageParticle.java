@@ -7,7 +7,7 @@ import javafx.scene.image.Image;
 public class ImageParticle extends Particle {
   private Image img; 
   public ImageParticle(Image i, Vec2 p, Vec2 v) {
-    super(p,v,40);
+    super(p,v,100);
     img = i;
   }
 

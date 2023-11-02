@@ -16,7 +16,7 @@ public class ParticleSystem {
   }
 
   public void addParticle(Image img) {
-    parts.add(new ImageParticle(img, origin.clone(), new Vec2(Math.random()*10-5,-Math.random()*10)));
+    parts.add(0, new ImageParticle(img, origin.clone(), new Vec2(Math.random()*10-5,-Math.random()*10)));
   }
 
   public void addParticle() {

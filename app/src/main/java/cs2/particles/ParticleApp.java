@@ -43,29 +43,27 @@ public class ParticleApp extends Application {
 
     Image starImg = new Image("file:star.png");
     Image smokeImg = new Image("file:smoke.png");
-  
-    System.out.println(starImg.getHeight());
-
-    Vec2 gravity = new Vec2(0, 1);
+    Vec2 gravity = new Vec2(0, -0.5);
     Vec2 wind = new Vec2();
-
+    Background bg = new Background();
     canvas.setOnMouseMoved((MouseEvent e) -> {
-      wind.moveTo(e.getX() / canvas.getWidth() * 10 - 5, 0);
+      //wind = new Vec2(e.getX() / canvas.getWidth() * 10 - 5, 0);
+      wind.moveTo(e.getX() / canvas.getWidth() * 4 - 2, 0);
     });
-
-
     AnimationTimer timer = new AnimationTimer() {
       public void handle(long t) {
-        g.setFill(Color.BLACK);
-        g.fillRect(0,0,600,600);
+        //g.setFill(Color.BLACK);
+        //g.fillRect(0,0,600,600);
+        bg.display(g);
 
         //g.drawImage(img, 0, 0, 40, 100);
 
         for(ParticleSystem ps : lst) {
+          g.setGlobalAlpha(0.3);
           ps.display(g);
           ps.update();
           //ps.addParticle();
-          ps.addParticle(starImg);
+          ps.addParticle(smokeImg);
           ps.addForce(gravity);
           ps.addForce(wind);
         }
