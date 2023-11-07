@@ -2,11 +2,11 @@ package cs2.generics;
 
 public class Sorting {
   
-  public static void bubbleSort(int[] a) {
+  public static <T extends Comparable<T>> void bubbleSort(T[] a) {
     for(int j=0; j<a.length; j++) {
       for(int i=0; i<a.length-1; i++) {
-        if(a[i] > a[i+1]) { //Need to swap?
-          int tmp = a[i];
+        if(a[i].compareTo(a[i+1]) > 0) { //Need to swap?
+          T tmp = a[i];
           a[i] = a[i+1];
           a[i+1] = tmp;
         }
@@ -38,21 +38,21 @@ public class Sorting {
     }
   }
   public static void main(String[] args) {
-    int[] x = new int[10];
+    Double[] x = new Double[10];
     for(int i=0; i<x.length; i++) {
-      x[i] = (int)(Math.random() * 100);
+      x[i] = (Math.random() * 100);
     }
-    for(int a : x) { System.out.print(a + ","); }
+    for(double a : x) { System.out.print(a + ","); }
     System.out.println();
-    insertionSort(x);
+    //insertionSort(x);
     //selectionSort(x);
-    //bubbleSort(x);
-    for(int a : x) { System.out.print(a + ","); }
+    bubbleSort(x);
+    for(double a : x) { System.out.print(a + ","); }
     System.out.println();
 
     double[] y = new double[10];
     for(int i=0; i<x.length; i++) {
-      x[i] = (int)(Math.random() * 100);
+      x[i] = (Math.random() * 100);
     }
   }
 

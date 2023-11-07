@@ -33,9 +33,10 @@ public class ParticleApp extends Application {
       lst.add(new ParticleSystem(new Vec2(e.getX(), e.getY())));
     });
 
-    canvas.setOnKeyTyped((KeyEvent e) -> {
+    canvas.setOnKeyPressed((KeyEvent e) -> {
       System.out.println("Pressed:" + e.getCode());
-      if(e.getCharacter().equals(" ")) {
+      if(e.getCode().equals(KeyCode.SPACE)) {
+      //if(e.getCharacter().equals(" ")) {
         lst.clear();
       }
     });
