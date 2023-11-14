@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Scanner;
 
 public class TextAnalysis {
@@ -54,7 +55,7 @@ public class TextAnalysis {
     return words;
   }
   public static void main(String[] args) {
-    HashMap<String, Integer> tempestCounts = countWords("tempest.txt");
+    Map<String, Integer> tempestCounts = countWords("tempest.txt");
     System.out.println(tempestCounts);
     System.out.println(tempestCounts.size());
 
@@ -65,12 +66,17 @@ public class TextAnalysis {
         System.out.println(key + ": " + tempestCounts.get(key));
       }
     }
-
     for(String key : tempestCounts.keySet()) {
       if(tempestCounts.get(key) > 100) {
         System.out.println(key + ": " + tempestCounts.get(key));
       }
     }
+    /*
+    for(Map.Entry<String,Integer> entry : tempestCounts) {
+      if(entry.getValue() > 100) {
+        System.out.println(entry.getKey());
+      }
+    }*/
 
 
     /*
