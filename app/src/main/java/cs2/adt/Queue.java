@@ -7,7 +7,7 @@ public interface Queue<T> {
   public boolean isEmpty();
 
   public static <T> Queue<T> create() {
-    return new ArrayQueue<T>();
+    return new LinkedQueue<T>();
   }
 
 }

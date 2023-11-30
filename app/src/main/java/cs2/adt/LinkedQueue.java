@@ -18,9 +18,29 @@ public class LinkedQueue<T> implements Queue<T> {
     tail = null;
   }
 
-  public void enqueue(T item);
-  public T dequeue();
-  public T peek();
-  public boolean isEmpty();
+  public void enqueue(T item) {
+    if(isEmpty()) {
+      head = new Node(item, null);
+      tail = head;
+    } else {
+      tail.next = new Node(item, null);
+      tail = tail.next;
+    }
+  }
+  public T dequeue() {
+    T tmp = head.data;
+    head = head.next;
+    if(head == null) {
+      tail = null;
+    }
+    System.out.println(head + ":" + tail);
+    return tmp;
+  }
+  public T peek() {
+    return head.data;
+  }
+  public boolean isEmpty() {
+    return head == null && tail == null;
+  }
 
 }
